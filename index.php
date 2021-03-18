@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include_once("header.php");
 ?>
 
 <div style="background-color: lightgray; width: 75%; margin: 0 auto; padding: 10px; border: 1px solid black;">
@@ -8,5 +8,5 @@ include("header.php");
 
 
 <?php
-include("footer.php");
+include_once("footer.php");
 ?>
