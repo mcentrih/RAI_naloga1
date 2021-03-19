@@ -11,6 +11,7 @@ $tel = NULL;
 $spol = NULL;
 $starost = NULL;
 
+//metoda ki preveri ce username ze obstaja
 function check_username($username)
 {
     global $conn;
@@ -19,7 +20,7 @@ function check_username($username)
     $res = $conn->query($query);
     return mysqli_num_rows($res) > 0;
 }
-
+//metoda ki preveri podatke in jih vpise ce so pravilni
 function register($usern, $pass)
 {
     global $conn;

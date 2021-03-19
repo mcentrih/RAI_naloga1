@@ -1,6 +1,6 @@
 <?php
 include_once('header.php');
-
+//priprava podatkov za posoddobitev oglasa
 function update($title, $des, $img, $cat)
 {
     if (isset($_GET["id"])) {

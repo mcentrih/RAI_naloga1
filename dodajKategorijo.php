@@ -1,6 +1,6 @@
 <?php
 include_once('header.php');
-
+//metoda, ki doda kategorijo na podlagi idja in vnosa
 if (isset($_POST["dodaj"])) {
     if (isset($_GET["id"])) {
         global $conn;

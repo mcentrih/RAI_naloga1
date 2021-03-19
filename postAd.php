@@ -1,6 +1,6 @@
 <?php
 include_once('header.php');
-
+//metoda pripravi podatke za vnos v tabelo in objavi oglas
 function publish($title, $des, $img, $cat)
 {
     global $conn;
@@ -8,6 +8,7 @@ function publish($title, $des, $img, $cat)
     $des = mysqli_real_escape_string($conn, $des);
     $user_id = $_SESSION["USER_ID"];
     $date = date('Y-m-d H:i:s');
+    //vpisovanje datuma 30 dni po objavi
     $end_date = date('Y-m-d H:i:s');
     $date = DateTime::createFromFormat('Y-m-d H:i:s', $date);
     $end_date = DateTime::createFromFormat('Y-m-d H:i:s', $end_date);

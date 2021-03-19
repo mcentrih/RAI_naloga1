@@ -19,7 +19,7 @@ function get_ad($id)
         return false;
     }
 }
-
+//metoda, ki dobi ostale slike
 function getSlike($id)
 {
     global $conn;
@@ -32,7 +32,7 @@ function getSlike($id)
     }
     return $slike;
 }
-
+//metoda, ki pridobi pod kategorije
 function getKategorije($id)
 {
     global $conn;
@@ -86,6 +86,7 @@ $img_data = base64_encode($oglas->slika);
             <button>Nazaj</button>
         </a>
         <?php
+        //izpis gumbov za manipulacijo z oglasom
         if (isset($_SESSION["USER_ID"])) {
             $i = $oglas->id;
             echo "<a style='padding-left: 20px;' href='editAd.php?id=$i'>";

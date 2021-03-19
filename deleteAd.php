@@ -1,6 +1,6 @@
 <?php
 include_once('header.php');
-
+//metoda, ki zbrise oglas na podlagi id
 if (isset($_GET["id"])) {
     global $conn;
     $i = $_GET["id"];

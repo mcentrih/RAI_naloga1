@@ -22,6 +22,7 @@
         <ul>
             <li style="display: inline; float: left"><a href="index.php">Domov</a></li>
             <?php
+            //spreminjanje menija ce si prijavljen ali ne
             if (isset($_SESSION["USER_ID"])) {
                 ?>
                 <li style="display: inline; padding-left: 85%"><a href="postAd.php">Objavi oglas</a></li>

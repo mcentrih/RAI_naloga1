@@ -1,7 +1,7 @@
 <?php
 include_once('header.php');
 
-// Funkcija prebere oglase iz baze in vrne polje objektov
+// metoda za branje oglasov in prikazovanje ce smo prijavljeni vseh ce ne pa samo tiste ki jim ni potekel datum
 function get_oglasi()
 {
     global $conn;
@@ -22,7 +22,7 @@ $oglasi = get_oglasi();
 if (isset($_POST["isci"])) {
     $oglasi = get_oglasi_iskanje();
 }
-
+//podobna metoda kot zgoraj samo da ima dodane filtre
 function get_oglasi_iskanje()
 {
     global $conn;
@@ -46,8 +46,7 @@ function get_oglasi_iskanje()
     return $oglasi;
 }
 
-//Izpiši oglase
-//Doda link z GET parametrom id na oglasi.php za gumb 'Preberi več'
+//filtriranje in iskalnik
 ?>
     <div style="border: 2px solid black; background-color: lightgray; width: 80%; margin: 0 auto; margin-top: 15px; padding-left: 15px; padding-bottom: 0px; padding-top: 10px;">
         <form method="POST" action="index.php">
@@ -66,6 +65,7 @@ function get_oglasi_iskanje()
     </div>
 <?php
 foreach ($oglasi as $oglas) {
+    //izpis vseh oglasov
     $img_data = base64_encode($oglas->slika);
 
     ?>
