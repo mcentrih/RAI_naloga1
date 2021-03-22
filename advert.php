@@ -46,6 +46,18 @@ function getKategorije($id)
     return $kategorije;
 }
 
+function getKoments($id){
+    global $conn;
+    $id = mysqli_real_escape_string($conn, $id);
+    $query = "SELECT * FROM komentarji WHERE FK_oglas = $id";
+    $res = $conn->query($query);
+    $komentarji = array();
+    while ($kom = $res->fetch_object()) {
+        array_push($komentarji, $kom);
+    }
+    return $komentarji;
+}
+
 if (!isset($_GET["id"])) {
     echo "Manjkajoči parametri.";
     die();
@@ -54,6 +66,7 @@ $id = $_GET["id"];
 $oglas = get_ad($id);
 $slike = getSlike($id);
 $kategorije = getKategorije($id);
+$komentarji = getKoments($id);
 if ($oglas == null) {
     echo "Oglas ne obstaja.";
     die();
@@ -71,17 +84,23 @@ $img_data = base64_encode($oglas->slika);
         }
         ?>
         <p>Predstavitevena slika:</p>
-        <img src="data:image/jpg;base64, <?php echo $img_data; ?>" width="400"/>
+        <img src="data:image/jpg;base64, <?php echo $img_data; ?>" width="100"/>
         <?php
         foreach ($slike as $s) {
             $img_data = base64_encode($s->slika);
-            echo "<img src='data:image/jpg;base64,$img_data' width='400'/><br>";
+            echo "<img src='data:image/jpg;base64,$img_data' width='100'/><br>";
             echo "<p> $cat->naziv</p>";
         }
         ?>
         <p>Objavil: <?php echo $oglas->username; ?></p>
         <p>Mail: <?php echo $oglas->email; ?></p>
         <p>Število ogledov: <?php echo $oglas->stevilo_ogledov; ?></p>
+        <p>Komentarji:</p>
+        <?php
+        foreach ($komentarji as $kom) {
+            echo "<p> $kom->komentar; $kom->vzdevek</p>";
+        }
+        ?>
         <a href='index.php'>
             <button>Nazaj</button>
         </a>
@@ -105,7 +124,10 @@ $img_data = base64_encode($oglas->slika);
             echo "      <button>Dodaj sliko</button>";
             echo "   </a>";
         }
+        echo "<br>";
+        include_once('api/api.html');
         ?>
+
     </div>
     <!--    <hr/>-->
 <?php

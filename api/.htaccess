@@ -1,0 +1,20 @@
+# rewrite pravilo nam omogoča uporabo "lepih" url naslovov
+RewriteEngine on 
+
+# pravilo vsebuje regex, ki pove, za katere zahteve se bo pravilo uporabilo
+# vsi naslovi tipa ../api/* bodo preslikani v api2.php/*
+# tako se bo na take zahteve odzivala naša datoteka api2.php
+# v regularnem izrazu za zajem vpisanih naslovov smo z () določili grupo
+# na grupe se sklicujemo z znakom $ in zaporedno številko grupe torej $1
+# v regexu v grupi iščemo vse naslove, kjer se za besedico api pojavi /, nato pa poljuben niz (/.*)
+# ali (|), pa se niz konča ($). tako se naslov /api preslika v api2.php, naslov api/bla pa v api2.php/bla
+# določili na koncu v oglatem oklepaju L in NC povesta pomenita sledeče
+# L, če je to pravilo izpolnjeno nehaj s procesiranjem pravil, ki sledijo
+# NC, ujemanje je neodvisno od malih in velikih črk (case insensitive, oz. NoCase)
+RewriteRule ^api(/.*|$) api2.php$1 [L,NC]
+
+# pravil bi seveda lahko napisali še več, ali pa kako drugače
+# več o pravilih lahko zveste na http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+
+
+

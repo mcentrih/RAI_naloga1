@@ -1,0 +1,23 @@
+﻿<html>
+  <head> </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="api/api.js"></script>
+  <body>
+    <div id="odg"></div>
+    <br />
+    <!-- uporabniški vmensik za dodajanje in urejanje oglasa -->
+    ID: <input type="text" id="id" /><br />
+    Email: <input type="email" id="email" /><br />
+    Komentar: <input type="text" id="komentar" /><br />
+    Vzdevek: <input type="text" id="vzdevek" /><br />
+    ID oglasa: <input type="text" id="FK_oglas" /><br />
+
+    <button onclick="add();">Dodaj</button>
+    <button onclick="update();">Posodobi</button>
+    <button onclick="deleteC();">Zbrisi</button>
+	<button onclick="getAll();">Vrni vse</button>
+	<button onclick="getOne();">Vrni enega</button>
+	<button onclick="emailChecked();">Email check</button>
+
+  </body>
+</html>
