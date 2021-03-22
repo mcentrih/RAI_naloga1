@@ -26,6 +26,7 @@
             if (isset($_SESSION["USER_ID"])) {
                 ?>
                 <li style="display: inline; padding-left: 85%"><a href="postAd.php">Objavi oglas</a></li>
+                <li style="display: inline; padding-left: 85%"><a href="mvc/index.php">Uredi uporabnike</a></li>
                 <li style="display: inline; float: right; padding-right: 10px"><a href="logout.php">Odjava</a></li>
                 <?php
             } else {
